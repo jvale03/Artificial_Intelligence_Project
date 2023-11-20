@@ -44,3 +44,13 @@ class Route:
         elif weight > 20 and weight <= 100:
             vehicle = Vehicle.Car()
             vehicle.update_speed(weight)
+
+    def __str__(self):
+        string = f'Rota: {self.city}\nEstafeta: {self.driver.get_name()}\nVeículo: {self.vehicle}\nOrders: '
+        for order in self.order_list:
+            string += f'{order.get_id()}' + ' '
+
+        return string
+
+        
+

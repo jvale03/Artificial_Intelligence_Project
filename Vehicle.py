@@ -22,6 +22,9 @@ class Vehicle:
     def update_speed(self,weight):
         decrease = self.speed_decrease * weight
         self.average_speed = decrease
+
+    def __str__(self):
+        return f'Peso máximo: {self.max_weight}\nVelocidade média: {self.average_speed}\nPrice: {self.price}'
     
 
 
@@ -30,10 +33,19 @@ class Bicycle(Vehicle):
     def __init__(self):
         super().__init__(max_weight=5, average_speed=10,speed_decrease=0.6,price=2)
 
+    def __str__(self):
+        return f"Bicicleta\n {self.__str__()}"
+
 class Motorcycle(Vehicle):
     def __init__(self):
         super().__init__(max_weight=20, average_speed=35,speed_decrease=0.5,price=3)
 
+    def __str__(self):
+        return "Mota"
+
 class Car(Vehicle):
     def __init__(self):
         super().__init__(max_weight=100, average_speed=50,speed_decrease=0.1,price=4)
+    
+    def __str__(self):
+        return "Carro"
