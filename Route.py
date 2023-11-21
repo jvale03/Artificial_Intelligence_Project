@@ -36,15 +36,18 @@ class Route:
         if weight <= 5:
             vehicle = Vehicle.Bicycle()
             vehicle.update_speed(weight)
+            self.vehicle = vehicle
         
         elif weight > 5 and weight <= 20:
             vehicle = Vehicle.Motorcycle()
             vehicle.update_speed(weight)
+            self.vehicle = vehicle
         
         elif weight > 20 and weight <= 100:
             vehicle = Vehicle.Car()
             vehicle.update_speed(weight)
-
+            self.vehicle = vehicle
+            
     def __str__(self):
         string = f'Rota: {self.city}\nEstafeta: {self.driver.get_name()}\nVeículo: {self.vehicle}\nOrders: '
         for order in self.order_list:

@@ -2,7 +2,7 @@
 
 
 class Address:
-    def __init__(self,city,street):
+    def __init__(self,street,city):
         self.city = city
         self.street = street
 
@@ -53,7 +53,9 @@ class Order:
         return self.id
     
     def set_rating(self,rate):
-        self.rating = rate
+        if rate >= 0 and rate <= 5:
+            
+            self.rating = rate
 
     def set_as_delivered(self):
         self.status = True
