@@ -27,8 +27,6 @@ class Vehicle:
         return f'Peso máximo: {self.max_weight}\nVelocidade média: {self.average_speed}\nPrice: {self.price}'
     
 
-
-
 class Bicycle(Vehicle):
     def __init__(self):
         super().__init__(max_weight=5, average_speed=10,speed_decrease=0.6,price=2)

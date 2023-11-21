@@ -1,9 +1,8 @@
 import Order
 import Route
-import Driver
 import Vehicle
+import Push_data
 
-driver = Driver.Driver("joao",None)
 
 address1 = Order.Address("Arcozelo","Barcelos")
 address2 = Order.Address("Martim","Barcelos")
@@ -23,7 +22,7 @@ order_list.append(order4)
 
 bicileta = Vehicle.Bicycle()
 
-route_barcelos = Route.Route(driver,None,"Barcelos",order_list)
+route_barcelos = Route.Route("João",None,"Barcelos",order_list)
 route_barcelos.set_vehicle()
 
 order3.set_as_delivered()
@@ -39,3 +38,10 @@ print("------------")
 for order in order_list:
     print(order)
     print("---")
+
+
+
+data = Push_data.Data(None,None)
+map = data.get_map()
+map.init_graph()
+map.display_graph()

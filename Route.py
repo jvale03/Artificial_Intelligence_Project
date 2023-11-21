@@ -49,7 +49,7 @@ class Route:
             self.vehicle = vehicle
             
     def __str__(self):
-        string = f'Rota: {self.city}\nEstafeta: {self.driver.get_name()}\nVeículo: {self.vehicle}\nOrders: '
+        string = f'Rota: {self.city}\nEstafeta: {self.driver}\nVeículo: {self.vehicle}\nOrders: '
         for order in self.order_list:
             string += f'{order.get_id()}' + ' '
 
