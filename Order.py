@@ -2,28 +2,29 @@
 
 
 class Address:
-    def __init__(self,street,city):
-        self.city = city
-        self.street = street
+    def __init__(self,parish,area):
+        self.parish = parish
+        self.area = area
 
-    def get_city(self):
-        return self.city
+    def get_area(self):
+        return self.area
     
-    def get_street(self):
-        return self.street
+    def get_parish(self):
+        return self.parish
     
-    def set_city(self,city):
-        self.city = city
+    def set_area(self,area):
+        self.area = area
     
-    def set_street(self,street):
-        self.street= street
+    def set_parish(self,parish):
+        self.parish= parish
     
     def __str__(self):
-        return f"Morada: {self.street}, {self.city}."
+        return f"\033[1mMorada:\033[m {self.parish}, {self.area}."
+    
 class Order:
-    def __init__(self,id,address,deadline,weight,volume,price):
+    def __init__(self,id,parish,area,deadline,weight,volume,price):
         self.id = id
-        self.address = address
+        self.address = Address(parish,area)
         self.deadline = deadline
         self.weight = weight
         self.volume = volume
@@ -64,4 +65,4 @@ class Order:
         self.price += increment
 
     def __str__(self):
-        return f'Encomenda: {self.id}\n{self.address}\nPrazo: {self.deadline}\nPeso: {self.weight}\nVolume: {self.volume}\nPreço: {self.price}\nAvaliação: {self.rating}\nStatus: {self.status}'
+        return f'\033[1mEncomenda:\033[m {self.id}\n{self.address}\n\033[1mPrazo:\033[m {self.deadline}\n\033[1mPeso:\033[m {self.weight}\n\033[1mVolume:\033[m {self.volume}\n\033[1mPreço:\033[m {self.price}\n\033[1mAvaliação:\033[m {self.rating}\n\033[1mStatus:\033[m {self.status}'

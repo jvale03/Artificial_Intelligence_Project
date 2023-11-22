@@ -1,0 +1,100 @@
+1;Carapecos;Norte; ;15.9;0.389;67.44
+2;Creixomil;Oeste; ;22.0;0.448;28.13
+3;Rio Covo;Sul; ;23.1;0.124;99.71
+4;Varzea;Este; ;3.1;0.224;2.07
+5;Vila Boa;Oeste; ;10.3;0.289;40.03
+6;Remelhe;Sul; ;11.3;0.054;75.59
+7;Tamel;Norte; ;20.3;0.035;77.92
+8;Manhente;Este; ;18.3;0.031;91.83
+9;Oliveira;Este; ;8.6;0.24;80.42
+10;Roriz;Norte; ;14.3;0.265;76.05
+11;Roriz;Norte; ;24.9;0.162;79.38
+12;Airo;Este; ;17.1;0.117;73.63
+13;Creixomil;Oeste; ;19.8;0.023;82.66
+14;Manhente;Este; ;16.0;0.254;61.93
+15;Lijo;Norte; ;18.4;0.096;87.82
+16;Gamil;Sul; ;5.7;0.342;24.91
+17;Alvito;Norte; ;4.1;0.061;14.51
+18;Abade de Neiva;Oeste; ;18.2;0.144;2.77
+19;Varzea;Este; ;2.4;0.071;13.71
+20;Creixomil;Oeste; ;19.9;0.095;94.82
+21;Arcozelo;Este; ;15.8;0.073;29.27
+22;Creixomil;Oeste; ;15.2;0.436;3.23
+23;Lijo;Norte; ;24.2;0.472;84.5
+24;Lijo;Norte; ;7.5;0.373;84.17
+25;Barcelinhos;Sul; ;12.3;0.222;62.02
+26;Oliveira;Este; ;5.0;0.476;45.66
+27;Vila Boa;Oeste; ;19.6;0.119;18.68
+28;Alvito;Norte; ;20.0;0.034;50.78
+29;Lijo;Norte; ;5.6;0.304;97.3
+30;Silva;Norte; ;19.4;0.261;78.77
+31;Alvelos;Sul; ;23.3;0.118;3.66
+32;Arcozelo;Este; ;5.4;0.464;58.34
+33;Oliveira;Este; ;20.2;0.478;58.8
+34;Vila Boa;Oeste; ;4.1;0.238;31.74
+35;Barcelinhos;Sul; ;9.2;0.349;34.73
+36;Pereira;Sul; ;12.7;0.458;70.05
+37;Gamil;Sul; ;17.4;0.384;79.07
+38;Alvelos;Sul; ;24.3;0.326;16.84
+39;Alvelos;Sul; ;11.5;0.456;52.44
+40;Lijo;Norte; ;15.7;0.323;80.24
+41;Gamil;Sul; ;5.0;0.281;43.17
+42;Alvelos;Sul; ;13.0;0.07;55.53
+43;Lijo;Norte; ;5.6;0.22;50.35
+44;Abade de Neiva;Oeste; ;19.1;0.163;26.35
+45;Arcozelo;Este; ;24.7;0.46;31.03
+46;Galegos;Este; ;20.7;0.323;18.51
+47;Fornelos;Oeste; ;8.6;0.112;65.69
+48;Carapecos;Norte; ;15.4;0.426;59.3
+49;Galegos;Este; ;9.9;0.026;76.37
+50;Tamel;Norte; ;0.6;0.038;46.74
+51;Carapecos;Norte; ;6.2;0.213;5.75
+52;Vila Boa;Oeste; ;10.7;0.429;75.77
+53;Creixomil;Oeste; ;2.7;0.055;45.03
+54;Galegos;Este; ;19.3;0.17;18.52
+55;Creixomil;Oeste; ;15.6;0.166;79.82
+56;Varzea;Este; ;6.4;0.155;26.97
+57;Rio Covo;Sul; ;15.1;0.477;43.01
+58;Abade de Neiva;Oeste; ;17.6;0.307;89.62
+59;Manhente;Este; ;0.8;0.196;26.77
+60;Varzea;Este; ;10.6;0.089;67.35
+61;Airo;Este; ;5.7;0.187;32.6
+62;Manhente;Este; ;17.9;0.399;44.45
+63;Remelhe;Sul; ;10.2;0.269;8.56
+64;Airo;Este; ;3.4;0.179;24.62
+65;Creixomil;Oeste; ;15.0;0.398;41.38
+66;Pereira;Sul; ;1.6;0.036;10.27
+67;Parelhal;Oeste; ;24.6;0.328;44.79
+68;Gamil;Sul; ;3.1;0.471;54.12
+69;Gilmonde;Sul; ;2.2;0.37;31.92
+70;Alvelos;Sul; ;5.2;0.42;25.89
+71;Gilmonde;Sul; ;6.5;0.296;20.77
+72;Vila Cova;Oeste; ;5.9;0.172;29.7
+73;Vila Cova;Oeste; ;1.2;0.305;12.6
+74;Lijo;Norte; ;4.6;0.091;69.15
+75;Carapecos;Norte; ;17.8;0.088;77.04
+76;Gilmonde;Sul; ;20.3;0.413;71.77
+77;Remelhe;Sul; ;14.5;0.162;27.64
+78;Parelhal;Oeste; ;24.7;0.297;44.56
+79;Lijo;Norte; ;24.5;0.453;89.49
+80;Abade de Neiva;Oeste; ;16.9;0.448;5.1
+81;Parelhal;Oeste; ;14.5;0.379;12.46
+82;Abade de Neiva;Oeste; ;2.5;0.19;43.32
+83;Fornelos;Oeste; ;2.5;0.396;68.67
+84;Remelhe;Sul; ;19.3;0.19;19.44
+85;Gilmonde;Sul; ;13.6;0.071;60.8
+86;Arcozelo;Este; ;8.3;0.071;51.83
+87;Roriz;Norte; ;23.3;0.264;35.5
+88;Creixomil;Oeste; ;6.3;0.092;38.9
+89;Pereira;Sul; ;9.1;0.392;97.32
+90;Vila Cova;Oeste; ;2.9;0.011;19.96
+91;Vila Cova;Oeste; ;8.2;0.131;50.84
+92;Creixomil;Oeste; ;6.4;0.332;86.75
+93;Varzea;Este; ;23.0;0.06;19.56
+94;Alvito;Norte; ;12.4;0.373;9.21
+95;Silva;Norte; ;1.1;0.499;43.05
+96;Manhente;Este; ;15.9;0.387;52.27
+97;Gilmonde;Sul; ;15.1;0.439;2.73
+98;Alvito;Norte; ;18.0;0.249;61.85
+99;Parelhal;Oeste; ;16.0;0.304;75.62
+100;Vila Cova;Oeste; ;3.3;0.202;48.29

@@ -3,14 +3,20 @@
 
 # aqui tenho certas duvidas em relaçao ao estafeta, porque nao sei se ao definir a classe estafeta, quando se referem a uma lista de encomendas numa freguesoa, se estao a referir a isto
 
+# isto depoisn é suposto usar IA para definir as rotas, não somos nós
+
 import Vehicle
 
 class Route:
-    def __init__(self,driver,vehicle,city,order_list):
+    def __init__(self,id,driver,vehicle,area,sorted_order_list):
+        self.id = id
         self.driver = driver
         self.vehicle = vehicle
-        self.city = city
-        self.order_list = order_list
+        self.area = area
+        self.sorted_order_list = sorted_order_list  # isto tem sorted porque esta lista estará ordenada de acordo com a ordem de paragens a fazer por freguesias
+
+    def get_id(self):
+        return self.id
 
     def get_driver(self):
         return self.driver
@@ -18,19 +24,19 @@ class Route:
     def get_vehicle(self):
         return self.vehicle
         
-    def get_city(self):
-        return self.city
+    def get_area(self):
+        return self.area
         
-    def get_order_list(self):
-        return self.order_list
+    def get_sorted_order_list(self):
+        return self.sorted_order_list
     
     def prices_update(self):
-        for order in self.order_list:
+        for order in self.sorted_order_list:
             order.price_update(self.vehicle.get_price())
 
     def set_vehicle(self):
         weight = 0
-        for order in self.order_list:
+        for order in self.sorted_order_list:
             weight += order.get_weight()
         
         if weight <= 5:
@@ -49,8 +55,8 @@ class Route:
             self.vehicle = vehicle
             
     def __str__(self):
-        string = f'Rota: {self.city}\nEstafeta: {self.driver}\nVeículo: {self.vehicle}\nOrders: '
-        for order in self.order_list:
+        string = f'\033[1mRota:\033[m {self.id}\n\033[1mArea:\033[m {self.area}\n\033[1mEstafeta:\033[m {self.driver.get_name()}\n\033[1mVeículo:\033[m {self.vehicle}\n\033[1mOrders:\033[m '
+        for order in self.sorted_order_list:
             string += f'{order.get_id()}' + ' '
 
         return string
