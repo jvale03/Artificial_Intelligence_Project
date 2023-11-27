@@ -25,7 +25,7 @@ class Order:
     def __init__(self,id,parish,area,deadline,weight,volume,price):
         self.id = id
         self.address = Address(parish,area)
-        self.deadline = deadline
+        self.deadline = deadline  # para ja está em inteiros que significam o numero de dias que faltam para entregar
         self.weight = weight
         self.volume = volume
         self.price = price      # preço base do artigo, depois ao definir a rota ainda se vai atualizar o preço
@@ -55,7 +55,6 @@ class Order:
     
     def set_rating(self,rate):
         if rate >= 0 and rate <= 5:
-            
             self.rating = rate
 
     def set_as_delivered(self):
