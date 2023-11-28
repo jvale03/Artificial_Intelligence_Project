@@ -1,4 +1,3 @@
-# nao sabia bem que nome dar a esta classe mas vai ser a classe "route".
 # aqui define-se a viagem que um estafeta vai fazer para entregar uma determinada lista de encomendas com um veículo
 # isto depois é suposto usar IA para definir as rotas, não somos nós
 

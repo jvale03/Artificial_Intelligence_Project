@@ -34,10 +34,10 @@ def init_graph(graph):
     graph.nodes["Barcelinhos"]['heuristic'] = 18
     graph.nodes["Rio Covo"]['heuristic'] = 49
     graph.nodes["Gamil"]['heuristic'] = 53
-    graph.nodes["Remelhe"]['heuristic'] = 76
+    graph.nodes["Remelhe"]['heuristic'] = 71
     graph.nodes["Pereira"]['heuristic'] = 73
     graph.nodes["Alvelos"]['heuristic'] = 60
-    graph.nodes["Gilmonde"]['heuristic'] = 71
+    graph.nodes["Gilmonde"]['heuristic'] = 76
 
     graph.nodes["Arcozelo"]['heuristic'] = 11
     graph.nodes["Galegos"]['heuristic'] = 47
@@ -70,7 +70,7 @@ def init_graph(graph):
     graph.add_edge("Alvito","Carapecos",weight = 3)
 
     graph.add_edge("Lijo","Roriz",weight = 3)
-    graph.add_edge("Lijo","Carapecos",weight = 4)
+    graph.add_edge("Lijo","Carapecos",weight = 3)
     graph.add_edge("Lijo","Silva",weight = 5)
 
     graph.add_edge("Roriz","Oliveira",weight = 2)
@@ -119,7 +119,7 @@ def init_graph(graph):
 
     graph.add_edge("Tamel","Vila Cova",weight = 10)
     graph.add_edge("Tamel","Silva",weight = 5)
-    graph.add_edge("Tamel","Carapecos",weight = 6)
+    graph.add_edge("Tamel","Carapecos",weight = 5)
 
 def set_positions():
     # definir posições 

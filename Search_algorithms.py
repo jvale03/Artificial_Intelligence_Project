@@ -1,13 +1,17 @@
 def AStarSearch(graph, start, goals):
         final_path = []
         for goal in goals:
-            print(start)
             open_list = [start] # queue
             closed_list = [] # visited
 
-            g_cost = {node: float('inf') for node in graph.nodes}
+            # definir todos os custos como infinito para depois ir vendo quais sao menores
+            g_cost = {}
+            f_cost = {}
+            for node in graph.nodes:
+                g_cost[node] = float('inf')
+                f_cost[node] = float('inf')
+            
             g_cost[start] = 0
-            f_cost = {node: float('inf') for node in graph.nodes}
             f_cost[start] = graph.nodes[start]['heuristic']
 
             parent = {start: None}
@@ -39,8 +43,10 @@ def AStarSearch(graph, start, goals):
 
                         if neighbor not in open_list:
                             open_list.append(neighbor)
+
             last = path.pop(-1)
             final_path += path
             start = goal
+            
         final_path.append(last)
         return final_path
