@@ -1,5 +1,5 @@
-#from networkx import Graph
-#import Map
+from networkx import Graph
+import Map
 import Driver
 import Order
 
@@ -7,15 +7,15 @@ def line_parser(line):
     return line.split(";")
 class Data:
     def __init__(self):
-        #self.map = Graph()
+        self.map = Graph()
         self.drivers = []
         self.orders = {'Sul':[],'Este':[],'Oeste':[],'Norte':[]}
     
-    # def init_graph(self):
-    #     Map.init_graph(self.map)
+    def init_graph(self):
+        Map.init_graph(self.map)
     
-    # def display_graph(self):
-    #     Map.display_graph(self.map)
+    def display_graph(self):
+        Map.display_graph(self.map)
 
     def init_drivers(self):
         drivers_file = open("Data/Drivers.txt",'r')

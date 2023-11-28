@@ -10,7 +10,7 @@ zonas = {"Norte": ["Silva","Lijo","Carapecos","Roriz","Tamel","Alvito"],
         "Oeste": ["Abade de Neiva","Creixomil","Parelhal","Fornelos","Vila Boa","Vila Cova"]}
 
 def driver_generator(number):
-    file = open("Drivers.txt",'w')
+    file = open("Data/Drivers.txt",'w')
 
     for x in range(1,number+1):
         file.write(f"{x};{random.choice(names)}\n")
@@ -18,7 +18,7 @@ def driver_generator(number):
     file.close()
 
 def order_generator(number):
-    file = open("Orders.txt",'w')
+    file = open("Data/Orders.txt",'w')
 
     for x in range(1,number+1):
         zona = random.choice(list(zonas.keys()))
@@ -31,7 +31,7 @@ def order_generator(number):
 
     file.close()
 
-if __name__ == "__main__":
+def generator():
     try:
         number_driver = int(input("Insere o numero de estafetas: "))
         number_orders = int(input("Insere o numero de encomendas: "))
