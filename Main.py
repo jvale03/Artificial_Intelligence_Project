@@ -4,53 +4,61 @@ import Data.Data_generator as Generator
 import Aux_functions
 
 
-import Order
-import Route
-import Vehicle
-import Driver
+def exemplo_de_viagem_respeitar_deadlines():
+    mapa = data.get_map()
+
+    # isto é so para um mero exemplo para testes de rotas criadas manualmente
+    orders = data.get_orders()
+    order_north = orders['Norte']
+    route = []
+    for x in range(4):
+        print(order_north[x])
+        print('\n')
+        route.append(order_north[x])
+    
+    # organizar rota
+    route = Aux_functions.sort_by_deadline(route) 
+    # transformar encomendas numa lista onde apenas tem as freguesias por ordem de passagem das mesmas
+    list = []
+    for order in route:
+        list.append(order.get_address().get_parish())  
 
 
-driver = Driver.Driver(1,"joao")
+    try:
+        path = Search_algorithms.AStarSearch(mapa,'Centro de Entregas',list)
+        print(path)
+    except Exception:
+        print("\033[31mFreguesia inexistente!\033[m")
 
-order1 = Order.Order(1,"Lijo","Norte",1,2,1,15)
-order2 = Order.Order(2,"Roriz","Norte",0,1,1,10)
-order3 = Order.Order(3,"Carapecos","Norte",3,1,1,7)
-order4 = Order.Order(4,"Tamel","Norte",0,1,1,35)
 
-order_list = []
-order_list.append(order1)
-order_list.append(order2)
-order_list.append(order3)
-order_list.append(order4)
-
-bicileta = Vehicle.Bicycle()
-
-route_barcelos = Route.Route(1,driver,None,"Barcelos",order_list)
-route_barcelos.set_vehicle()
-
-order3.set_as_delivered()
-
-order4.set_rating(4)
-order2.set_rating(10)
-
-route_barcelos.prices_update()
 
 
 def menu(data,option):
     if option == 1:
         data.display_graph()
+
     elif option == 2:
         mapa = data.get_map()
-        #freguesia = input("Insere aqui a freguesia de destino: ")  # para depois tornar iterativo
-        
+
+        # isto é so para um mero exemplo para testes de rotas criadas manualmente
+        orders = data.get_orders()
+        order_north = orders['Norte']
         route = []
-        Aux_functions.sort_by_deadline(route_barcelos.get_sorted_order_list()) # organizar por deadline
-        for order in route_barcelos.get_sorted_order_list():
-            route.append(order.get_address().get_parish())
+        for x in range(4):
+            print(order_north[x])
+            print('\n')
+            route.append(order_north[x])
+        
+        # organizar rota
+        route = Aux_functions.sort_by_deadline(route) 
+        # transformar encomendas numa lista onde apenas tem as freguesias por ordem de passagem das mesmas
+        list = []
+        for order in route:
+            list.append(order.get_address().get_parish())  
 
 
         try:
-            path = Search_algorithms.AStarSearch(mapa,'Centro de Entregas',route)
+            path = Search_algorithms.AStarSearch(mapa,'Centro de Entregas',list)
             print(path)
         except Exception:
             print("\033[31mFreguesia inexistente!\033[m")
@@ -65,9 +73,8 @@ def menu(data,option):
         print("\033[31mOpção inválida!\033[m")
 
 
-if __name__ == "__main__":
 
-    
+if __name__ == "__main__":    
     option = input("\033[36mDar Upload dos dados (1)\nSair\n\033[m")
     if option.isdigit():
         option = int(option)
