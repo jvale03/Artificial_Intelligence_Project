@@ -2,13 +2,15 @@ from networkx import Graph
 import Map
 import Driver
 import Order
-import Aux_functions
 
+def line_parser(line):
+    return line.split(";")
 class Data:
     def __init__(self):
         self.map = Graph()
         self.drivers = []
         self.orders = {'Sul':[],'Este':[],'Oeste':[],'Norte':[]}
+        self.routes = []
     
     def init_graph(self):
         Map.init_graph(self.map)
@@ -20,7 +22,7 @@ class Data:
         drivers_file = open("Data/Drivers.txt",'r')
         lines = drivers_file.readlines()
         for line in lines:
-            arguments = Aux_functions.line_parser(line.strip())
+            arguments = line_parser(line.strip())
             self.drivers.append(Driver.Driver(int(arguments[0]),arguments[1]))
         
     def init_orders(self):
@@ -29,7 +31,7 @@ class Data:
 
         # neste init ja estamos a ordenar a informação por area, data e freguesia, respetivamente
         for line in lines:
-            arguments = Aux_functions.line_parser(line.strip())
+            arguments = line_parser(line.strip())
             self.orders[arguments[2]].append(Order.Order(int(arguments[0]),arguments[1],arguments[2],int(arguments[3]),float(arguments[4]),float(arguments[5]),float(arguments[6])))
         
 
@@ -52,6 +54,12 @@ class Data:
             for order in self.orders[area]:
                 order.deadline-=1
     
+    def get_routes(self):
+        return self.routes
+
+    def add_route(self,route):
+        self.routes.append(route)
+
     def __str__(self):
         string = ""
 
@@ -66,6 +74,11 @@ class Data:
             string += f'\n\033[1m{area}\033[m\n'
             for order in self.orders[area]:
                 string += f'\n{order}\n'
+
+        string += "\n\033[1mRoutes\033[m\n"
+            
+        for route in self.routes:
+            string += f'\n{route}\n'
 
         return string
 

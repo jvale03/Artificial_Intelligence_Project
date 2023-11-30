@@ -1,34 +1,13 @@
 import Push_data
 import Search_algorithms
 import Data.Data_generator as Generator
-import Aux_functions
+import Route
+
+import networkx
 
 
 def exemplo_de_viagem_respeitar_deadlines():
-    mapa = data.get_map()
-
-    # isto é so para um mero exemplo para testes de rotas criadas manualmente
-    orders = data.get_orders()
-    order_north = orders['Norte']
-    route = []
-    for x in range(4):
-        print(order_north[x])
-        print('\n')
-        route.append(order_north[x])
-    
-    # organizar rota
-    route = Aux_functions.sort_by_deadline(route) 
-    # transformar encomendas numa lista onde apenas tem as freguesias por ordem de passagem das mesmas
-    list = []
-    for order in route:
-        list.append(order.get_address().get_parish())  
-
-
-    try:
-        path = Search_algorithms.AStarSearch(mapa,'Centro de Entregas',list)
-        print(path)
-    except Exception:
-        print("\033[31mFreguesia inexistente!\033[m")
+    x=0
 
 
 
@@ -43,25 +22,29 @@ def menu(data,option):
         # isto é so para um mero exemplo para testes de rotas criadas manualmente
         orders = data.get_orders()
         order_north = orders['Norte']
-        route = []
+        order_list = []
         for x in range(4):
-            print(order_north[x])
-            print('\n')
-            route.append(order_north[x])
+            order_list.append(order_north[x])
         
-        # organizar rota
-        route = Aux_functions.sort_by_deadline(route) 
-        # transformar encomendas numa lista onde apenas tem as freguesias por ordem de passagem das mesmas
+        route = Route.Route(1,None,None,None,order_list)
+
+        choice = int(input("Priorizar data de entregas(1)\nPriorizar sustentabilidade(2)\n"))
         list = []
-        for order in route:
-            list.append(order.get_address().get_parish())  
 
-
-        try:
-            path = Search_algorithms.AStarSearch(mapa,'Centro de Entregas',list)
-            print(path)
-        except Exception:
-            print("\033[31mFreguesia inexistente!\033[m")
+        if choice == 1:
+            try:
+                route.sort_by_deadline()
+                list = route.order_to_parish()
+            except Exception:
+                print("\033[31mFreguesia inexistente!\033[m")
+        elif choice == 2:
+            try:
+                route.sort_by_shortest_path()
+                list = route.order_to_parish()
+            except Exception:
+                print("\033[31mFreguesia inexistente!\033[m")
+        path = Search_algorithms.AStarSearch(mapa,'Centro de Entregas',list)
+        print(path)
 
     elif option == 3:
         print(data)
@@ -104,9 +87,6 @@ if __name__ == "__main__":
 
     else:
         print("\033[31mSair...\033[m")
-
-
-
 
 
 
