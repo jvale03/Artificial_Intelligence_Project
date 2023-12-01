@@ -1,3 +1,4 @@
+
 import Map
 
 # neste caso, o algoritmo aStar vai apenas encontrar o caminho mais rápido de paragem em paragem

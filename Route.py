@@ -36,6 +36,7 @@ class Route:
     
     def set_weight(self):
         for order in self.order_list:
+
             self.weight += order.get_weight()
 
     def set_volume(self):

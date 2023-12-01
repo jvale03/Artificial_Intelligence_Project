@@ -3,9 +3,6 @@ import Search_algorithms
 import Data.Data_generator as Generator
 import Route
 
-import networkx
-
-
 def exemplo_de_viagem_respeitar_deadlines():
     x=0
 
@@ -27,6 +24,8 @@ def menu(data,option):
             order_list.append(order_north[x])
         
         route = Route.Route(1,None,None,None,order_list)
+
+        # print(route)
 
         choice = int(input("Priorizar data de entregas(1)\nPriorizar sustentabilidade(2)\n"))
         list = []
