@@ -2,9 +2,8 @@ import Push_data
 import Search_algorithms
 import Data.Data_generator as Generator
 import Route
-
-def exemplo_de_viagem_respeitar_deadlines():
-    x=0
+import time
+import Aux_functions
 
 
 
@@ -15,40 +14,55 @@ def menu(data,option):
 
     elif option == 2:
         mapa = data.get_map()
+        drivers_list = []
+        driver = input('\033[33mInsira o id de um estafeta: \033[m')
+        while driver.isdigit():            
+            if int(driver) in drivers_list or int(driver) > len(data.get_drivers()):
+                print('\033[31mEstafeta inválido!\033[m')
+            else:
+                drivers_list.append(int(driver))
+            driver = input('\033[33mInsira o id de um estafeta: \033[m')
 
-        # isto é so para um mero exemplo para testes de rotas criadas manualmente
-        orders = data.get_orders()
-        order_north = orders['Norte']
-        order_list = []
-        for x in range(4):
-            order_list.append(order_north[x])
-        
-        route = Route.Route(1,None,None,None,order_list)
+        print('\033[33mA realizar rotas...\033[m\n')
+        time.sleep(1)
 
-        # print(route)
+        routes_list = data.realize_routes(drivers_list)
+        for route in routes_list:
+            print(f'\033[1m{route.get_id()}\033[m')
+            print(f'{route.str_orders_parish()}\n')
+            
+            print('\033[1mPercurso Eco:\033[m')
+            path = Aux_functions.eco_astar(mapa,route)
+            print(f'{path}\n')
 
-        choice = int(input("Priorizar data de entregas(1)\nPriorizar sustentabilidade(2)\n"))
-        list = []
+            print('\033[1mPercurso Prioritário:\033[m')
+            path = Aux_functions.priority_astar(mapa,route)
+            print(f'{path}\n')
 
-        if choice == 1:
-            try:
-                route.sort_by_deadline()
-                list = route.order_to_parish()
-            except Exception:
-                print("\033[31mFreguesia inexistente!\033[m")
-        elif choice == 2:
-            try:
-                route.sort_by_shortest_path()
-                list = route.order_to_parish()
-            except Exception:
-                print("\033[31mFreguesia inexistente!\033[m")
-        path = Search_algorithms.AStarSearch(mapa,'Centro de Entregas',list)
-        print(path)
+
+
 
     elif option == 3:
-        print(data)
+        option = ''
+        option = input('\033[33mEstafetas(1)\nEncomendas(2)\nRotas(3)\nSair\n\033[m')
+        if option.isdigit():
+            option = int(option)
+        if option == 1:
+            for driver in data.get_drivers():
+                print(driver)
+                print('\n')
+        elif option == 2:
+            for area in data.get_orders():
+                for order in data.get_orders()[area]:
+                    print(order)
+                    print('\n')
+        elif option == 3:
+            for route in data.get_routes():
+                print(route)
+                print('\n')
 
     elif option == 4:
+        print("\033[32mDados limpos\033[m")
         Generator.generator()
     
     elif option != 5:
@@ -70,6 +84,7 @@ if __name__ == "__main__":
             data.init_graph()
             data.init_drivers()
             data.init_orders()
+            data.init_routes()
             print("\033[32mUpload realizado com sucesso!\033[m")
         except Exception as e:
             print(f"\033[31mErro no Upload: {e}\033[m")
@@ -77,7 +92,7 @@ if __name__ == "__main__":
         
         option = ''
         while option != 5:
-            option = input("\033[36mMostrar Mapa(1)\nFazer caminho(2)\nMostrar dados(3)\nGerar Novos Dados(4)\nSair(5)\n\033[m")
+            option = input("\033[36mMostrar Mapa(1)\nFazer entregas(2)\nMostrar dados(3)\nGerar Novos Dados(4)\nSair(5)\n\033[m")
             if option.isdigit():
                 option = int(option)
             menu(data,option)

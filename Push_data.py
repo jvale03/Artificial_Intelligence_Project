@@ -2,6 +2,8 @@ from networkx import Graph
 import Map
 import Driver
 import Order
+import random
+import Route
 
 def line_parser(line):
     return line.split(";")
@@ -24,6 +26,7 @@ class Data:
         for line in lines:
             arguments = line_parser(line.strip())
             self.drivers.append(Driver.Driver(int(arguments[0]),arguments[1]))
+        drivers_file.close()
         
     def init_orders(self):
         order_file = open("Data/Orders.txt",'r')
@@ -34,10 +37,30 @@ class Data:
             arguments = line_parser(line.strip())
             self.orders[arguments[2]].append(Order.Order(int(arguments[0]),arguments[1],arguments[2],int(arguments[3]),float(arguments[4]),float(arguments[5]),float(arguments[6])))
         
+        order_file.close()
+        
 
-        # isto está em comentario nas pode ser util ordenar logo previamente, mas para fases de testes, é inutil
-        # for area in self.orders:
-        #     self.orders[area].sort(key=lambda order: (order.deadline, order.address.parish))
+    def init_routes(self):
+        id = 0
+        for area in self.orders:
+            x = 0
+            array_len = len(self.orders[area])
+            while x < array_len:
+                y = 0
+                orders_array = []
+                while y < random.randint(1,4):
+                    if x == array_len:
+                        break
+                    orders_array.append(self.orders[area][x])
+                    x+=1
+                    y+=1
+                id+=1
+                new_route = Route.Route(id,self.drivers[random.randint(0,len(self.drivers)-1)],None,area,orders_array)
+                self.add_route(new_route)               
+            
+        for route in self.routes:
+            route.set_vehicle()    
+            
 
     def get_map(self):
         return self.map
@@ -49,6 +72,7 @@ class Data:
         return self.orders 
     
     # função para passar um dia em todas as encomendas
+    # ainda nao sei se vai ser usado
     def skip_one_day(self):
         for area in self.orders:
             for order in self.orders[area]:
@@ -59,6 +83,23 @@ class Data:
 
     def add_route(self,route):
         self.routes.append(route)
+
+    def realize_routes(self,list):
+        routes_list = []
+        for driver in list:
+            for route in self.routes:
+                if route.get_driver().get_id() == driver:
+                    routes_list.append(route)
+                    self.delete_route(route)
+                    break
+        return routes_list
+
+    def delete_route(self,route):
+        for order in route.get_order_list():
+            order.set_as_delivered()
+            order.set_rating(random.randint(1,5))
+        route.add_orders_driver()
+        self.routes.remove(route)
 
     def __str__(self):
         string = ""

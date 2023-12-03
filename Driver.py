@@ -3,14 +3,19 @@ class Driver:
         self.id = id
         self.name = name
         self.rating = None
+        self.delivered = []
 
     def get_id(self):
         return self.id
     
     def get_name(self):
         return self.name
+
+    def get_delivered(self):
+        return self.delivered
     
     def get_rating(self):
+        self.update_rating()
         return self.rating
 
     def set_id(self,id):
@@ -21,9 +26,17 @@ class Driver:
 
     def set_rating(self,rating):
         self.rating = rating
+    
+    def add_delivered(self,order):
+        self.delivered.append(order)
+        self.update_rating()
 
-    def update_rating(self,new_rating):
-        self.rating = new_rating # adaptar para depois atualizar o rating do estafeta
+    def update_rating(self):
+        average = 0
+        for order in self.delivered:
+            average += order.get_rating()
+        self.rating = average / len(self.delivered)
+
     
     def __str__(self):
         return f'\033[1mID:\033[m {self.id}\n\033[1mName:\033[m {self.name}\n\033[1mRating:\033[m {self.rating}'

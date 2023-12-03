@@ -26,6 +26,7 @@ class Order:
         self.id = id
         self.address = Address(parish,area)
         self.deadline = deadline  # para ja está em inteiros que significam o numero de dias que faltam para entregar
+        self.date = 0
         self.weight = weight
         self.volume = volume
         self.price = price      # preço base do artigo, depois ao definir a rota ainda se vai atualizar o preço
@@ -34,6 +35,12 @@ class Order:
 
     def get_address(self):
         return self.address
+
+    def get_date(self):
+        return self.date
+    
+    def set_date(self,date):
+        self.date = date
 
     def get_deadline(self):
         return self.deadline
@@ -54,7 +61,9 @@ class Order:
         return self.id
     
     def set_rating(self,rate):
-        if rate >= 0 and rate <= 5:
+        if self.date > self.deadline:
+            self.rating = rate-1
+        else:
             self.rating = rate
 
     def set_as_delivered(self):
@@ -62,6 +71,7 @@ class Order:
 
     def price_update(self,increment):
         self.price += increment
+        self.price = round(self.price,2)
 
     def __str__(self):
         return f'\033[1mEncomenda:\033[m {self.id}\n{self.address}\n\033[1mPrazo:\033[m {self.deadline}\n\033[1mPeso:\033[m {self.weight}\n\033[1mVolume:\033[m {self.volume}\n\033[1mPreço:\033[m {self.price}\n\033[1mAvaliação:\033[m {self.rating}\n\033[1mStatus:\033[m {self.status}'

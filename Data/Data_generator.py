@@ -24,8 +24,8 @@ def order_generator(number):
         zona = random.choice(list(zonas.keys()))
         freguesia = random.choice(zonas[zona])
         deadline = random.choice(deadlines)
-        weight = round(random.uniform(0.1,25),1)
-        volume = round(random.uniform(0.5,5),1)
+        weight = round(random.uniform(0.1,24),1)
+        volume = round(random.uniform(0.5,4),1)
         price = round(random.uniform(0.99,100),2)
         file.write(f'{x};{freguesia};{zona};{deadline};{weight};{volume};{price}\n')
 
