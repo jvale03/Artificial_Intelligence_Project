@@ -64,7 +64,7 @@ class Route:
     def str_orders_parish(self):
         str = ''
         for order in self.order_list:
-            str += f'{order.get_address().get_parish()}  '
+            str += f'order: {order.get_id()} -> {order.get_address().get_parish()}\n'
         return str
 
     def add_orders_driver(self):

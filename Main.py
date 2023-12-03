@@ -1,11 +1,7 @@
 import Push_data
-import Search_algorithms
 import Data.Data_generator as Generator
-import Route
 import time
 import Aux_functions
-
-
 
 
 def menu(data,option):
@@ -24,22 +20,23 @@ def menu(data,option):
             driver = input('\033[33mInsira o id de um estafeta: \033[m')
 
         print('\033[33mA realizar rotas...\033[m\n')
-        time.sleep(1)
+        time.sleep(0.5)
 
         routes_list = data.realize_routes(drivers_list)
         for route in routes_list:
-            print(f'\033[1m{route.get_id()}\033[m')
-            print(f'{route.str_orders_parish()}\n')
+            print(f'\033[1mRoute {route.get_id()}, {route.get_area()}\033[m')
+            print(f'{route.str_orders_parish()}')
             
-            print('\033[1mPercurso Eco:\033[m')
-            path = Aux_functions.eco_astar(mapa,route)
-            print(f'{path}\n')
-
-            print('\033[1mPercurso Prioritário:\033[m')
             path = Aux_functions.priority_astar(mapa,route)
-            print(f'{path}\n')
+            print(f'\033[1mPercurso Prioritário:\033[m {path[0]}')
+            print(f'{path[1]}')
+            print('\033[31m--------\033[m')
 
-
+            path = Aux_functions.eco_astar(mapa,route)
+            print(f'\033[1mPercurso Eco:\033[m {path[0]}')
+            print(f'{path[1]}\n')
+        
+            data.delete_route(route)
 
 
     elif option == 3:

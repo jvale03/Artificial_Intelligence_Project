@@ -74,4 +74,4 @@ class Order:
         self.price = round(self.price,2)
 
     def __str__(self):
-        return f'\033[1mEncomenda:\033[m {self.id}\n{self.address}\n\033[1mPrazo:\033[m {self.deadline}\n\033[1mPeso:\033[m {self.weight}\n\033[1mVolume:\033[m {self.volume}\n\033[1mPreço:\033[m {self.price}\n\033[1mAvaliação:\033[m {self.rating}\n\033[1mStatus:\033[m {self.status}'
+        return f'\033[1mEncomenda:\033[m {self.id}\n{self.address}\n\033[1mPrazo:\033[m {self.deadline}\n\033[1mEntrega:\033[m {self.date}\n\033[1mPeso:\033[m {self.weight}\n\033[1mVolume:\033[m {self.volume}\n\033[1mPreço:\033[m {self.price}\n\033[1mAvaliação:\033[m {self.rating}\n\033[1mStatus:\033[m {self.status}'

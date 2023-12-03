@@ -90,7 +90,6 @@ class Data:
             for route in self.routes:
                 if route.get_driver().get_id() == driver:
                     routes_list.append(route)
-                    self.delete_route(route)
                     break
         return routes_list
 

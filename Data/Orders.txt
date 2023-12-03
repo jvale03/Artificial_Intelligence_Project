@@ -1,10 +1,30 @@
-1;Abade de Neiva;Oeste;1;18.8;4.0;28.43
-2;Alvelos;Sul;3;6.3;1.6;90.81
-3;Gilmonde;Sul;0;20.0;1.9;16.2
-4;Alvito;Norte;0;22.0;1.0;20.39
-5;Roriz;Norte;3;1.1;0.7;98.02
-6;Vila Boa;Oeste;3;5.5;2.5;83.89
-7;Manhente;Este;3;17.4;3.9;10.76
-8;Remelhe;Sul;4;5.3;1.2;24.69
-9;Oliveira;Este;3;7.3;1.9;85.34
-10;Pereira;Sul;2;7.8;3.5;63.97
+1;Vila Cova;Oeste;1;22.0;2.7;39.2
+2;Alvito;Norte;3;8.3;0.7;32.12
+3;Remelhe;Sul;2;17.0;2.6;54.61
+4;Silva;Norte;1;15.8;0.5;82.61
+5;Alvito;Norte;4;5.8;0.6;48.1
+6;Roriz;Norte;3;8.2;2.7;33.04
+7;Silva;Norte;0;5.6;1.9;12.39
+8;Abade de Neiva;Oeste;1;8.3;1.6;95.34
+9;Remelhe;Sul;0;2.2;3.8;48.0
+10;Tamel;Norte;4;13.3;3.8;64.5
+11;Carapecos;Norte;2;20.0;2.1;74.35
+12;Alvito;Norte;2;20.0;3.0;7.74
+13;Vila Boa;Oeste;3;4.4;3.5;90.6
+14;Vila Boa;Oeste;4;14.3;1.0;61.29
+15;Gamil;Sul;1;17.2;3.0;93.11
+16;Lijo;Norte;2;9.4;3.1;97.98
+17;Creixomil;Oeste;1;5.0;1.7;64.46
+18;Rio Covo;Sul;3;0.4;1.5;83.23
+19;Fornelos;Oeste;1;7.7;3.7;68.34
+20;Lijo;Norte;1;19.2;1.5;26.55
+21;Vila Boa;Oeste;4;21.4;1.4;74.37
+22;Alvito;Norte;1;6.3;3.0;96.43
+23;Carapecos;Norte;1;22.1;2.6;35.67
+24;Gamil;Sul;4;20.2;2.9;27.56
+25;Creixomil;Oeste;4;15.6;2.4;44.97
+26;Alvelos;Sul;1;4.9;1.2;90.66
+27;Arcozelo;Este;2;1.7;2.6;98.17
+28;Gamil;Sul;3;0.6;3.2;1.54
+29;Tamel;Norte;2;3.2;0.5;69.64
+30;Silva;Norte;1;20.1;2.5;84.54
