@@ -2,7 +2,7 @@
 # isto depois é suposto usar IA para definir as rotas, não somos nós
 
 import Vehicle
-import Search_algorithms
+import Aux_functions
 
 
 class Route:
@@ -10,6 +10,7 @@ class Route:
         self.id = id
         self.driver = driver
         self.vehicle = vehicle
+        self.distance = 0
         self.weight = 0
         self.volume = 0
         self.area = area
@@ -17,6 +18,12 @@ class Route:
 
     def get_id(self):
         return self.id
+
+    def get_distance(self):
+        return self.distance
+
+    def set_distance(self,distance):
+        self.distance = round(distance,2)
 
     def get_driver(self):
         return self.driver
@@ -64,7 +71,7 @@ class Route:
     def str_orders_parish(self):
         str = ''
         for order in self.order_list:
-            str += f'order: {order.get_id()} -> {order.get_address().get_parish()}\n'
+            str += f'Order: {order.get_id()} -> {order.get_address().get_parish()}\n'
         return str
 
     def add_orders_driver(self):
@@ -78,10 +85,10 @@ class Route:
         return list
 
     def sort_by_deadline(self):
-        Search_algorithms.sort_by_deadline(self.order_list)
+        Aux_functions.sort_by_deadline(self.order_list)
     
     def sort_by_shortest_path(self):
-        self.order_list = Search_algorithms.travelling_sales_man('Centro de Entregas',self.order_list)
+        self.order_list = Aux_functions.travelling_sales_man('Centro de Entregas',self.order_list)
             
     def __str__(self):
         string = f'\033[1mRota:\033[m {self.id}\n\033[1mArea:\033[m {self.area}\n\033[1mEstafeta:\033[m {self.driver.get_name()}, {self.driver.get_id()}\n\033[1mVeículo:\033[m {self.vehicle}\n\033[1mPeso:\033[m {self.weight}\n\033[1mVolume:\033[m {self.volume}\n\033[1mOrders:\033[m '

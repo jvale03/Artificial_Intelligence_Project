@@ -24,16 +24,17 @@ def menu(data,option):
 
         routes_list = data.realize_routes(drivers_list)
         for route in routes_list:
+            print('\033[31m--------\033[m')
+            
             print(f'\033[1mRoute {route.get_id()}, {route.get_area()}\033[m')
             print(f'{route.str_orders_parish()}')
             
             path = Aux_functions.priority_astar(mapa,route)
-            print(f'\033[1mPercurso Prioritário:\033[m {path[0]}')
-            print(f'{path[1]}')
-            print('\033[31m--------\033[m')
+            print(f'\033[1mPercurso Prioritário:\033[m {path[0]}\n\033[1mDistancia:\033[m {route.get_distance()}km, {Aux_functions.convert_to_hours_str(round(route.get_distance()/route.get_vehicle().get_average_speed(),2))}\n\033[1mVeículo:\033[m {route.get_vehicle()}')
+            print(f'{path[1]}\n')
 
             path = Aux_functions.eco_astar(mapa,route)
-            print(f'\033[1mPercurso Eco:\033[m {path[0]}')
+            print(f'\033[1mPercurso Eco:\033[m {path[0]}\n\033[1mDistancia:\033[m {route.get_distance()}km, {Aux_functions.convert_to_hours_str(round(route.get_distance()/route.get_vehicle().get_average_speed(),2))}\n\033[1mVeículo:\033[m {route.get_vehicle()}')
             print(f'{path[1]}\n')
         
             data.delete_route(route)
@@ -61,6 +62,8 @@ def menu(data,option):
     elif option == 4:
         print("\033[32mDados limpos\033[m")
         Generator.generator()
+        time.sleep(0.3)
+        print("\033[32mReinicie o programa!\033[m")
     
     elif option != 5:
         print("\033[31mOpção inválida!\033[m")

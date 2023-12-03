@@ -35,7 +35,7 @@ class Data:
         # neste init ja estamos a ordenar a informação por area, data e freguesia, respetivamente
         for line in lines:
             arguments = line_parser(line.strip())
-            self.orders[arguments[2]].append(Order.Order(int(arguments[0]),arguments[1],arguments[2],int(arguments[3]),float(arguments[4]),float(arguments[5]),float(arguments[6])))
+            self.orders[arguments[2]].append(Order.Order(int(arguments[0]),arguments[1],arguments[2],float(arguments[3]),float(arguments[4]),float(arguments[5]),float(arguments[6])))
         
         order_file.close()
         

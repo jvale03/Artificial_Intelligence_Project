@@ -1,10 +1,9 @@
-import Map
-
 # falta definir para so fazer num algoritmo especifico
 
 # neste caso, o algoritmo aStar vai apenas encontrar o caminho mais rápido de paragem em paragem
 # util para procurar o  melhor caminho de acordo com a ordem ja atribuida previamente de paragens
-def AStarSearch(graph, start, goals):
+def AStarSearch(graph, start, route):
+        goals = route.get_order_list()
         distance = 0
         final_path = []
         for goal in goals:
@@ -30,7 +29,7 @@ def AStarSearch(graph, start, goals):
                 if current_node == goal.get_address().get_parish():
                     path = []
                     distance += g_cost[current_node]
-                    goal.set_date(distance)
+                    goal.set_date(distance,route.get_vehicle())
                     while current_node is not None:
                         path.append(current_node)
                         current_node = parent[current_node]
@@ -58,47 +57,9 @@ def AStarSearch(graph, start, goals):
             start = goal.get_address().get_parish()
 
         final_path.append(last)
-        return final_path
+        route.set_distance(distance)
+        return (final_path)
 
 
-# esta função vai organizar as encomendas por deadline e ao mesmo tempo por freguesia
-# isto é, dá prioridade ao prazo, mas se houver mais do que uma encomenda nessa cidade, 
-# mesmo que o seu prazo seja imenso, vai entregar de modo a ser economico
-def sort_by_deadline(list):
-    # Ordenar encomendas por data limite
-    list.sort(key=lambda order: order.deadline)
 
-    # Criar dicionário para armazenar encomendas por destino
-    order_by_dest = {}
-
-    # Agrupar encomendas por destino
-    for order in list:
-        parish = order.get_address().get_parish()
-        if parish not in order_by_dest:
-            order_by_dest[parish] = []
-        order_by_dest[parish].append(order)
-
-    list.clear()
-
-    for parish in order_by_dest:
-        for order in order_by_dest[parish]:
-            list.append(order)
-
-
-# algoritmo do caxeiro viajante
-# neste algoritmo o objetivo é encontrar o caminho mais rápido que passe em determinadas paragens
-# ou seja, o segredo deste algoritmo é ordenar as paragens de modo a encontrar o caminho mais curto
-def travelling_sales_man(start,goals):
-    new_list = []
-    while(goals):
-        min = (None,float('inf'))
-        for goal in goals:
-            weight = Map.weight_calculator(start,goal.get_address().get_parish())
-            if weight < min[1]:
-                min = (goal,weight)
-        start = min[0].get_address().get_parish()
-        new_list.append(min[0])
-        goals.remove(min[0])
-    return new_list
-        
 

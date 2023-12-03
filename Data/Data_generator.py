@@ -2,7 +2,7 @@ import random
 
 # este ficheiro serve apenas para gerar data para ficheiros à parte
 
-deadlines = [0,1,2,3,4]
+
 names = ["Joao","Vitor","Luis","Filipe","Rui","Tomas","Barreto","Oliveira","Ramos","Hugo","Duarte","Carlos","Gilberto","Manuel","Alberto","Lopes","Mariana","Maria","Beatriz","Ana","Jose","Renata"]
 zonas = {"Norte": ["Silva","Lijo","Carapecos","Roriz","Tamel","Alvito"],
         "Sul": ["Barcelinhos","Rio Covo","Gamil","Remelhe","Pereira","Alvelos","Gilmonde"],
@@ -23,7 +23,7 @@ def order_generator(number):
     for x in range(1,number+1):
         zona = random.choice(list(zonas.keys()))
         freguesia = random.choice(zonas[zona])
-        deadline = random.choice(deadlines)
+        deadline = round(random.uniform(0.1,0.8),2)
         weight = round(random.uniform(0.1,24),1)
         volume = round(random.uniform(0.5,4),1)
         price = round(random.uniform(0.99,100),2)

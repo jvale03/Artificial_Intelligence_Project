@@ -1,5 +1,6 @@
 # classe das encomendas
 
+import Aux_functions
 
 class Address:
     def __init__(self,parish,area):
@@ -39,8 +40,8 @@ class Order:
     def get_date(self):
         return self.date
     
-    def set_date(self,date):
-        self.date = date
+    def set_date(self,distance,vehicle):
+        self.date = round(distance/vehicle.get_average_speed(),2)
 
     def get_deadline(self):
         return self.deadline
@@ -74,4 +75,5 @@ class Order:
         self.price = round(self.price,2)
 
     def __str__(self):
-        return f'\033[1mEncomenda:\033[m {self.id}\n{self.address}\n\033[1mPrazo:\033[m {self.deadline}\n\033[1mEntrega:\033[m {self.date}\n\033[1mPeso:\033[m {self.weight}\n\033[1mVolume:\033[m {self.volume}\n\033[1mPreço:\033[m {self.price}\n\033[1mAvaliação:\033[m {self.rating}\n\033[1mStatus:\033[m {self.status}'
+        return f'\033[1mEncomenda:\033[m {self.id}\n{self.address}\n\033[1mPrazo:\033[m {Aux_functions.convert_to_hours_str(self.deadline)}\n\033[1mEntrega:\033[m {Aux_functions.convert_to_hours_str(self.date)}\n\033[1mPeso:\033[m {self.weight}\n\033[1mVolume:\033[m {self.volume}\n\033[1mPreço:\033[m {self.price}\n\033[1mAvaliação:\033[m {self.rating}\n\033[1mStatus:\033[m {self.status}'
+
