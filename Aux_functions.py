@@ -1,17 +1,30 @@
 import Search_algorithms
 import Map
+import time
 
-def priority_astar(mapa,route):
+def execute_algorithms(mapa,route):
+    list = route.order_to_parish()
+    astar_start = time.time()
+    astar = Search_algorithms.AStarSearch(mapa,'Centro de Entregas',route)
+    astar_end = time.time()
+    dijkstra = Search_algorithms.dijkstra_muliple_goals(mapa,'Centro de Entregas',route)
+    dijkstra_end = time.time()
+    bfs = Search_algorithms.BFS_multiple_goals(mapa,'Centro de Entregas',route)
+    bfs_end = time.time()
+    dfs = Search_algorithms.DFS_multiple_goals(mapa,'Centro de Entregas',route)
+    dfs_end = time.time()
+    timing = (round(astar_end-astar_start,6),round(dijkstra_end-astar_end,6),round(bfs_end-dijkstra_end,6),round(dfs_end-bfs_end,6))
+    return (list,astar,dijkstra,bfs,dfs,timing)
+
+def priority(mapa,route):
     route.sort_by_deadline()
-    list = route.order_to_parish()
-    path = Search_algorithms.AStarSearch(mapa,'Centro de Entregas',route)
-    return (list,path)
+    execute_algorithms(mapa,route)
+    return (execute_algorithms(mapa,route))
 
-def eco_astar(mapa,route):
+def eco(mapa,route):
     route.sort_by_shortest_path()
-    list = route.order_to_parish()
-    path = Search_algorithms.AStarSearch(mapa,'Centro de Entregas',route)
-    return (list,path)
+    execute_algorithms(mapa,route)
+    return (execute_algorithms(mapa,route))
 
 def convert_to_hours_str(decimal):
     horas = int(decimal)
@@ -60,3 +73,10 @@ def travelling_sales_man(start,goals):
         goals.remove(min[0])
     return new_list
         
+# testa se todos os nodos têm um caminho possível ate ao centro de entregas
+def nodes_test(data):
+    mapa = data.get_map()
+    for node in mapa.nodes:
+        if Search_algorithms.BFS(mapa,'Centro de Entregas',node) == None:
+            return False
+    return True

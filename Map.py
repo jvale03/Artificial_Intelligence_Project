@@ -59,34 +59,34 @@ def init_graph(graph):
     graph.nodes["Centro de Entregas"]['heuristic'] = 0
 
 
-    graph.nodes["Silva"]['heuristic'] = 21
-    graph.nodes["Lijo"]['heuristic'] = 23
-    graph.nodes["Carapecos"]['heuristic'] = 61
-    graph.nodes["Roriz"]['heuristic'] = 56
-    graph.nodes["Tamel"]['heuristic'] = 54
-    graph.nodes["Alvito"]['heuristic'] = 70
+    graph.nodes["Silva"]['heuristic'] = 15
+    graph.nodes["Lijo"]['heuristic'] = 30
+    graph.nodes["Carapecos"]['heuristic'] = 49
+    graph.nodes["Roriz"]['heuristic'] = 68
+    graph.nodes["Tamel"]['heuristic'] = 70
+    graph.nodes["Alvito"]['heuristic'] = 55
 
     graph.nodes["Barcelinhos"]['heuristic'] = 18
-    graph.nodes["Rio Covo"]['heuristic'] = 49
-    graph.nodes["Gamil"]['heuristic'] = 53
-    graph.nodes["Remelhe"]['heuristic'] = 71
-    graph.nodes["Pereira"]['heuristic'] = 73
-    graph.nodes["Alvelos"]['heuristic'] = 60
-    graph.nodes["Gilmonde"]['heuristic'] = 76
+    graph.nodes["Rio Covo"]['heuristic'] = 43
+    graph.nodes["Gamil"]['heuristic'] = 39
+    graph.nodes["Remelhe"]['heuristic'] = 64
+    graph.nodes["Pereira"]['heuristic'] = 57
+    graph.nodes["Alvelos"]['heuristic'] = 34
+    graph.nodes["Gilmonde"]['heuristic'] = 84
 
     graph.nodes["Arcozelo"]['heuristic'] = 11
     graph.nodes["Galegos"]['heuristic'] = 47
-    graph.nodes["Oliveira"]['heuristic'] = 85
-    graph.nodes["Manhente"]['heuristic'] = 80
+    graph.nodes["Oliveira"]['heuristic'] = 81
+    graph.nodes["Manhente"]['heuristic'] = 78
     graph.nodes["Varzea"]['heuristic'] = 72
-    graph.nodes["Airo"]['heuristic'] = 93
+    graph.nodes["Airo"]['heuristic'] = 90
 
-    graph.nodes["Vila Cova"]['heuristic'] = 92
-    graph.nodes["Vila Boa"]['heuristic'] = 31
-    graph.nodes["Abade de Neiva"]['heuristic'] = 15
-    graph.nodes["Creixomil"]['heuristic'] = 63
+    graph.nodes["Vila Cova"]['heuristic'] = 95
+    graph.nodes["Vila Boa"]['heuristic'] = 26
+    graph.nodes["Abade de Neiva"]['heuristic'] = 24
+    graph.nodes["Creixomil"]['heuristic'] = 51
     graph.nodes["Parelhal"]['heuristic'] = 87
-    graph.nodes["Fornelos"]['heuristic'] = 83
+    graph.nodes["Fornelos"]['heuristic'] = 92
 
     # adicionar arestas
     graph.add_edge("Centro de Entregas","Arcozelo",weight = weight_calculator("Centro de Entregas","Arcozelo"))

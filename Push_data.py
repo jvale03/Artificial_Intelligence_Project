@@ -13,7 +13,13 @@ class Data:
         self.drivers = []
         self.orders = {'Sul':[],'Este':[],'Oeste':[],'Norte':[]}
         self.routes = []
-    
+
+    def clear(self):
+        self.map = Graph()
+        self.drivers = []
+        self.orders = {'Sul':[],'Este':[],'Oeste':[],'Norte':[]}
+        self.routes = []
+
     def init_graph(self):
         Map.init_graph(self.map)
     
@@ -38,6 +44,14 @@ class Data:
             self.orders[arguments[2]].append(Order.Order(int(arguments[0]),arguments[1],arguments[2],float(arguments[3]),float(arguments[4]),float(arguments[5]),float(arguments[6])))
         
         order_file.close()
+
+    def sorted_orders(self):
+        order_list = []
+        for area in self.orders:
+            for order in self.orders[area]:
+                order_list.append(order)
+        order_list.sort(key=lambda order: order.id)
+        return order_list
         
 
     def init_routes(self):
@@ -96,9 +110,21 @@ class Data:
     def delete_route(self,route):
         for order in route.get_order_list():
             order.set_as_delivered()
-            order.set_rating(random.randint(1,5))
+            order.set_rating(random.randint(2,5))
         route.add_orders_driver()
         self.routes.remove(route)
+
+    def remove_edge(self,source,dest):
+        try: 
+            self.map.remove_edge(source,dest)
+        except Exception:
+            print('\033[31mCaminho inexistente!\033[m')
+
+    def add_edge(self,source,dest):
+        try:
+            self.map.add_edge(source,dest,weight=Map.weight_calculator(source,dest))
+        except Exception:
+            print('\033[31mErro!\033[m')
 
     def __str__(self):
         string = ""

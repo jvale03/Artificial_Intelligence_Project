@@ -25,6 +25,7 @@ class Vehicle:
     def update_speed(self,weight):
         decrease = self.speed_decrease * weight
         self.average_speed -= decrease
+        self.average_speed = round(self.average_speed,2)
 
     def __str__(self):
         return f'\033[1mPeso máximo:\033[m {self.max_weight}\n\033[Volume máximo:\033[m {self.max_volume}\n\033[1mVelocidade média:\033[m {self.average_speed}\n\033[1mPrice:\033[m {self.price}'
