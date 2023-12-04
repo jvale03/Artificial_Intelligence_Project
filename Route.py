@@ -71,7 +71,7 @@ class Route:
     def str_orders_parish(self):
         str = ''
         for order in self.order_list:
-            str += f'Order: {order.get_id()} -> {order.get_address().get_parish()}\n'
+            str += f'Rota: {order.get_id()} -> {order.get_address().get_parish()}\n'
         return str
 
     def add_orders_driver(self):
@@ -91,7 +91,7 @@ class Route:
         self.order_list = Aux_functions.travelling_sales_man('Centro de Entregas',self.order_list)
             
     def __str__(self):
-        string = f'\033[1mRota:\033[m {self.id}\n\033[1mArea:\033[m {self.area}\n\033[1mEstafeta:\033[m {self.driver.get_name()}, {self.driver.get_id()}\n\033[1mVeículo:\033[m {self.vehicle}\n\033[1mPeso:\033[m {self.weight}\n\033[1mVolume:\033[m {self.volume}\n\033[1mOrders:\033[m '
+        string = f'\033[1mRota:\033[m {self.id}\n\033[1mArea:\033[m {self.area}\n\033[1mEstafeta:\033[m {self.driver.get_name()}, {self.driver.get_id()}\n\033[1mVeículo:\033[m {self.vehicle}\n\033[1mPeso:\033[m {self.weight}\n\033[1mVolume:\033[m {self.volume}\n\033[1mEncomendas:\033[m '
         for order in self.order_list:
             string += f'{order.get_id()} ' 
 

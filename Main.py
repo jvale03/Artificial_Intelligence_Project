@@ -25,8 +25,8 @@ def menu(data,option):
         routes_list = data.realize_routes(drivers_list)
         for route in routes_list:
             print('\033[31m--------\033[m')
-            
-            print(f'\033[1mRoute {route.get_id()}, {route.get_area()}\033[m')
+
+            print(f'\033[1mRota {route.get_id()}, {route.get_area()}\033[m')
             print(f'{route.str_orders_parish()}')
             
             path = Aux_functions.priority_astar(mapa,route)
