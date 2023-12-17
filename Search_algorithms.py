@@ -62,6 +62,8 @@ def AStarSearch(graph, start, route):
 
 
 def dijkstra_algorithm(map,start,goal):
+    if map == goal:
+        return 0
     
     distances = {dist: float('inf') for dist in map.nodes}
     distances[start] = 0
@@ -83,15 +85,8 @@ def dijkstra_algorithm(map,start,goal):
                 previous_nodes[neighbor] = current[1]
                 queue.append((round(distance,2),neighbor))
 
-    path = []
-    current = goal
-
-    while current is not None:
-        path.append(current)
-        current = previous_nodes[current]
-
-    path.reverse()
-    return path
+    
+    return distances[goal]
 
 
 def dijkstra_muliple_goals(map,start,route):

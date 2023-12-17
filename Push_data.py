@@ -58,11 +58,16 @@ class Data:
         id = 0
         for area in self.orders:
             x = 0
+            z = 0
             array_len = len(self.orders[area])
             while x < array_len:
                 y = 0
                 orders_array = []
-                while y < random.randint(1,4):
+                if z == 4:
+                    z = 1
+                else:
+                    z += 1 
+                while y < z:
                     if x == array_len:
                         break
                     orders_array.append(self.orders[area][x])

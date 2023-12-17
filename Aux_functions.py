@@ -7,14 +7,12 @@ def execute_algorithms(mapa,route):
     astar_start = time.time()
     astar = Search_algorithms.AStarSearch(mapa,'Centro de Entregas',route)
     astar_end = time.time()
-    dijkstra = Search_algorithms.dijkstra_muliple_goals(mapa,'Centro de Entregas',route)
-    dijkstra_end = time.time()
     bfs = Search_algorithms.BFS_multiple_goals(mapa,'Centro de Entregas',route)
     bfs_end = time.time()
     dfs = Search_algorithms.DFS_multiple_goals(mapa,'Centro de Entregas',route)
     dfs_end = time.time()
-    timing = (round(astar_end-astar_start,6),round(dijkstra_end-astar_end,6),round(bfs_end-dijkstra_end,6),round(dfs_end-bfs_end,6))
-    return (list,astar,dijkstra,bfs,dfs,timing)
+    timing = (round(astar_end-astar_start,6),round(bfs_end-astar_end,6),round(dfs_end-bfs_end,6))
+    return (list,astar,bfs,dfs,timing)
 
 def priority(mapa,route):
     route.sort_by_deadline()

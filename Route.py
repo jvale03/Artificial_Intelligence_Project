@@ -71,7 +71,7 @@ class Route:
     def str_orders_parish(self):
         str = ''
         for order in self.order_list:
-            str += f'Rota: {order.get_id()} -> {order.get_address().get_parish()}\n'
+            str += f'Entrega: {order.get_id()} -> {order.get_address().get_parish()}\n'
         return str
 
     def add_orders_driver(self):

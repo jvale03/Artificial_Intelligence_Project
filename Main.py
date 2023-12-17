@@ -2,6 +2,7 @@ import Push_data
 import Data.Data_generator as Generator
 import time
 import Aux_functions
+import Search_algorithms
 
 def get_estafetas():
     drivers_list = []
@@ -51,17 +52,15 @@ def menu(data,option):
             
             path = Aux_functions.priority(mapa,route)
             print(f'\033[1;33mPercurso Prioritário:\033[m {path[0]}\n\033[1;33mDistancia:\033[m {route.get_distance()}km, {Aux_functions.convert_to_hours_str(round(route.get_distance()/route.get_vehicle().get_average_speed(),2))}\n\033[1;33mVeículo:\033[m {route.get_vehicle()}, {route.get_vehicle().get_average_speed()}km/h')
-            print(f'\033[1;33mAStar: \033[m{path[1]} -> \033[1;4m{path[5][0]}s\033[m')
-            print(f'\033[1;33mDijkstra: \033[m{path[2]} -> \033[1;4m{path[5][1]}s\033[m')
-            print(f'\033[1;33mBFS: \033[m{path[3]} -> \033[1;4m{path[5][2]}s\033[m')
-            print(f'\033[1;33mDFS: \033[m{path[4]} -> \033[1;4m{path[5][3]}s\033[m\n')
+            print(f'\033[1;33mAStar: \033[m{path[1]} -> \033[1;4m{path[4][0]}s\033[m')
+            print(f'\033[1;33mBFS: \033[m{path[2]} -> \033[1;4m{path[4][1]}s\033[m')
+            print(f'\033[1;33mDFS: \033[m{path[3]} -> \033[1;4m{path[4][2]}s\033[m\n')
 
             path = Aux_functions.eco(mapa,route)
             print(f'\033[1;33mPercurso Eco:\033[m {path[0]}\n\033[1;33mDistancia:\033[m {route.get_distance()}km, {Aux_functions.convert_to_hours_str(round(route.get_distance()/route.get_vehicle().get_average_speed(),2))}\n\033[1;33mVeículo:\033[m {route.get_vehicle()}, {route.get_vehicle().get_average_speed()}km/h')
-            print(f'\033[1;33mAStar: \033[m{path[1]} -> \033[1;4m{path[5][0]}s\033[m')
-            print(f'\033[1;33mDijkstra: \033[m{path[2]} -> \033[1;4m{path[5][1]}s\033[m')
-            print(f'\033[1;33mBFS: \033[m{path[3]} -> \033[1;4m{path[5][2]}s\033[m')
-            print(f'\033[1;33mDFS: \033[m{path[4]} -> \033[1;4m{path[5][3]}s\033[m\n')
+            print(f'\033[1;33mAStar: \033[m{path[1]} -> \033[1;4m{path[4][0]}s\033[m')
+            print(f'\033[1;33mBFS: \033[m{path[2]} -> \033[1;4m{path[4][1]}s\033[m')
+            print(f'\033[1;33mDFS: \033[m{path[3]} -> \033[1;4m{path[4][2]}s\033[m\n')
 
         
             data.delete_route(route)

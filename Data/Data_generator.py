@@ -7,7 +7,7 @@ names = ["Joao","Vitor","Luis","Filipe","Rui","Tomas","Barreto","Oliveira","Ramo
 zonas = {"Norte": ["Silva","Lijo","Carapecos","Roriz","Tamel","Alvito"],
         "Sul": ["Barcelinhos","Rio Covo","Gamil","Remelhe","Pereira","Alvelos","Gilmonde"],
         "Este": ["Arcozelo","Galegos","Oliveira","Manhente","Varzea","Airo"],
-        "Oeste": ["Abade de Neiva","Creixomil","Parelhal","Fornelos","Vila Boa","Vila Cova"]}
+        "Oeste": ["Abade de Neiva","Creixomil","Perelhal","Fornelos","Vila Boa","Vila Cova"]}
 
 def driver_generator(number):
     file = open("Data/Drivers.txt",'w')

@@ -36,14 +36,14 @@ pos["Airo"] = [3,-1.4]
 
 pos["Abade de Neiva"] = [-1.2,0.6]
 pos["Creixomil"] = [-2.1,0]
-pos["Parelhal"] = [-3,0.4]
+pos["Perelhal"] = [-3,0.4]
 pos["Fornelos"] = [-2.9,-1.5]
 
 # Adicionar nós para as cidades, freguesias e o ponto central
 zonas = {"Norte": ["Silva","Lijo","Carapecos","Roriz","Tamel","Alvito"],
         "Sul": ["Barcelinhos","Rio Covo","Gamil","Remelhe","Pereira","Alvelos","Gilmonde"],
         "Este": ["Arcozelo","Galegos","Oliveira","Manhente","Varzea","Airo"],
-        "Oeste": ["Abade de Neiva","Creixomil","Parelhal","Fornelos","Vila Boa","Vila Cova"]}
+        "Oeste": ["Abade de Neiva","Creixomil","Perelhal","Fornelos","Vila Boa","Vila Cova"]}
 
 
     
@@ -85,7 +85,7 @@ def init_graph(graph):
     graph.nodes["Vila Boa"]['heuristic'] = 26
     graph.nodes["Abade de Neiva"]['heuristic'] = 24
     graph.nodes["Creixomil"]['heuristic'] = 51
-    graph.nodes["Parelhal"]['heuristic'] = 87
+    graph.nodes["Perelhal"]['heuristic'] = 87
     graph.nodes["Fornelos"]['heuristic'] = 92
 
     # adicionar arestas
@@ -147,14 +147,14 @@ def init_graph(graph):
 
     graph.add_edge("Creixomil","Fornelos",weight = weight_calculator("Creixomil","Fornelos"))
     graph.add_edge("Creixomil","Abade de Neiva",weight = weight_calculator("Creixomil","Abade de Neiva"))
-    graph.add_edge("Creixomil","Parelhal",weight = weight_calculator("Creixomil","Parelhal"))
+    graph.add_edge("Creixomil","Perelhal",weight = weight_calculator("Creixomil","Perelhal"))
 
-    graph.add_edge("Fornelos","Parelhal",weight = weight_calculator("Fornelos","Parelhal"))
+    graph.add_edge("Fornelos","Perelhal",weight = weight_calculator("Fornelos","Perelhal"))
 
     graph.add_edge("Abade de Neiva","Silva",weight = weight_calculator("Abade de Neiva","Silva"))
     graph.add_edge("Abade de Neiva","Tamel",weight = weight_calculator("Abade de Neiva","Tamel"))
 
-    graph.add_edge("Parelhal","Vila Cova",weight = weight_calculator("Parelhal","Vila Cova"))
+    graph.add_edge("Perelhal","Vila Cova",weight = weight_calculator("Perelhal","Vila Cova"))
 
     graph.add_edge("Tamel","Vila Cova",weight = weight_calculator("Tamel","Vila Cova"))
     graph.add_edge("Tamel","Silva",weight = weight_calculator("Tamel","Silva"))
@@ -188,6 +188,9 @@ def set_colors():
                 node_colors.append(color)
 
     return node_colors
+
+def update_heuristic(graph,parish,heuristic):
+    graph.nodes[parish]['heuristic'] = heuristic
 
 # dar print da tabela 
 def string_heuristic(graph):
