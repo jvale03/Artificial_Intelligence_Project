@@ -1,3 +1,5 @@
+import Aux_functions
+
 # falta definir para so fazer num algoritmo especifico
 
 # neste caso, o algoritmo aStar vai apenas encontrar o path mais rápido de paragem em paragem
@@ -7,6 +9,7 @@ def AStarSearch(graph, start, route):
         distance = 0
         final_path = []
         for goal in goals:
+            Aux_functions.update_heuristic(graph,start)
             open_list = [start] # queue
             closed_list = [] # visited
 
@@ -58,6 +61,7 @@ def AStarSearch(graph, start, route):
 
         final_path.append(last)
         route.set_distance(distance)
+        Aux_functions.update_heuristic(graph,'Centro de Entregas')
         return (final_path)
 
 

@@ -2,6 +2,8 @@ import Search_algorithms
 import Map
 import time
 
+zonas = ["Centro de Entregas","Silva","Lijo","Carapecos","Roriz","Tamel","Alvito","Barcelinhos","Rio Covo","Gamil","Remelhe","Pereira","Alvelos","Gilmonde","Arcozelo","Galegos","Oliveira","Manhente","Varzea","Airo","Abade de Neiva","Creixomil","Perelhal","Fornelos","Vila Boa","Vila Cova"]
+
 def execute_algorithms(mapa,route):
     list = route.order_to_parish()
     astar_start = time.time()
@@ -78,3 +80,12 @@ def nodes_test(data):
         if Search_algorithms.BFS(mapa,'Centro de Entregas',node) == None:
             return False
     return True
+
+
+def update_heuristic(graph,start):
+    distances = []
+    for parish in zonas:
+        distances.append((parish,Search_algorithms.dijkstra_algorithm(graph,start,parish)))
+    
+    for parish in distances:
+        graph.nodes[parish[0]]['heuristic'] = round(((parish[1]*100000) * 4.31)/150500, 1)

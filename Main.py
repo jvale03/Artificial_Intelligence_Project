@@ -114,7 +114,9 @@ if __name__ == "__main__":
         print("\033[32mUpload realizado com sucesso!\033[m")
     except Exception as e:
         print(f"\033[31mErro no Upload: {e}\033[m")
-    
+
+    Aux_functions.update_heuristic(data.get_map(),"Centro de Entregas")
+
     if Aux_functions.nodes_test(data) != False:
         print("\033[32mSegundo o algoritmo BFS, o 'Centro de Entregas' tem acesso a todas as freguesias!\033[m")
         option = ''
