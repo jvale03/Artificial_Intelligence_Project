@@ -56,6 +56,7 @@ class Data:
 
     def init_routes(self):
         id = 0
+        driver = -1
         for area in self.orders:
             x = 0
             z = 0
@@ -63,10 +64,17 @@ class Data:
             while x < array_len:
                 y = 0
                 orders_array = []
+
                 if z == 4:
                     z = 1
                 else:
-                    z += 1 
+                    z += 1
+
+                if driver == len(self.drivers)-1:
+                    driver = 0
+                else:
+                    driver+=1 
+
                 while y < z:
                     if x == array_len:
                         break
@@ -74,7 +82,7 @@ class Data:
                     x+=1
                     y+=1
                 id+=1
-                new_route = Route.Route(id,self.drivers[random.randint(0,len(self.drivers)-1)],None,area,orders_array)
+                new_route = Route.Route(id,self.drivers[driver],None,area,orders_array)
                 self.add_route(new_route)               
             
         for route in self.routes:
