@@ -66,25 +66,18 @@ def menu(data,option):
         
             data.delete_route(route)
         
-        threads = []
 
-        option = input('Realizar rota prioritária(1)\nRealizar rota eco(2)\n')
-        while option != '1' or option != '2':
-            if option == '1':
-                for route in routes_list:
-                    new_thread = threading.Thread(target=Aux_functions.run_route, args=(mapa,route,'Priority'))
-                    threads.append(new_thread)
-                    new_thread.start()  
+        option = input('Realizar rota prioritária(1)\nRealizar rota eco(2)\nSair\n')
+        if option == '1':
+            for route in routes_list:
+                new_thread = threading.Thread(target=Aux_functions.run_route, args=(mapa,route,'Priority'))
+                new_thread.start()  
 
-                break
+        elif option == '2':
+            for route in routes_list:
+                new_thread = threading.Thread(target=Aux_functions.run_route, args=(mapa,route,'Eco'))
+                new_thread.start()   
 
-            elif option == '2':
-                for route in routes_list:
-                    new_thread = threading.Thread(target=Aux_functions.run_route, args=(mapa,route,'Eco'))
-                    new_thread.start()   
-
-                break
-            option = input('Realizar rota prioritária(1)\nRealizar rota eco(2)\n')    
 
 
     elif option == 4:
@@ -109,7 +102,7 @@ def menu(data,option):
     elif option == 5:
         print("\033[32mDados limpos\033[m")
         Generator.generator()
-        time.sleep(0.3)
+        time.sleep(0.5)
         data.clear()
         data.init_graph()
         data.init_drivers()
