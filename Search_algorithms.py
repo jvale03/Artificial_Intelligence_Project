@@ -1,14 +1,17 @@
 import Aux_functions
+import time
 
 # falta definir para so fazer num algoritmo especifico
 
 # neste caso, o algoritmo aStar vai apenas encontrar o path mais rápido de paragem em paragem
 # util para procurar o  melhor path de acordo com a ordem ja atribuida previamente de paragens
-def AStarSearch(graph, start, route):
+def AStarSearch(graph, start, route,mode):
         goals = route.get_order_list()
         distance = 0
         final_path = []
         for goal in goals:
+            if mode == 'Run':
+                time.sleep(5)
             Aux_functions.update_heuristic(graph,start)
             open_list = [start] # queue
             closed_list = [] # visited
@@ -31,12 +34,15 @@ def AStarSearch(graph, start, route):
 
                 if current_node == goal.get_address().get_parish():
                     path = []
-                    distance += g_cost[current_node]
-                    goal.set_date(distance,route.get_vehicle())
+                    if(mode == 'Run'):
+                        distance += g_cost[current_node]
+                        goal.set_date(distance,route.get_vehicle())
                     while current_node is not None:
                         path.append(current_node)
                         current_node = parent[current_node]
                     path.reverse()
+                    if(mode == 'Run'):
+                        print(f'Driver {route.get_driver().get_id()}: {path}')
                     break
 
                 closed_list.append(current_node)

@@ -7,7 +7,7 @@ zonas = ["Centro de Entregas","Silva","Lijo","Carapecos","Roriz","Tamel","Alvito
 def execute_algorithms(mapa,route):
     list = route.order_to_parish()
     astar_start = time.time()
-    astar = Search_algorithms.AStarSearch(mapa,'Centro de Entregas',route)
+    astar = Search_algorithms.AStarSearch(mapa,'Centro de Entregas',route,None)
     astar_end = time.time()
     bfs = Search_algorithms.BFS_multiple_goals(mapa,'Centro de Entregas',route)
     bfs_end = time.time()
@@ -18,19 +18,23 @@ def execute_algorithms(mapa,route):
 
 def priority(mapa,route):
     route.sort_by_deadline()
-    execute_algorithms(mapa,route)
     return (execute_algorithms(mapa,route))
 
 def eco(mapa,route):
     route.sort_by_shortest_path()
-    execute_algorithms(mapa,route)
     return (execute_algorithms(mapa,route))
 
 def convert_to_hours_str(decimal):
     horas = int(decimal)
     minutos = int((decimal - horas) * 60)
     return f'{horas} h {minutos} min'
-    
+
+def run_route(mapa,route,mode):
+    if mode == 'Eco':
+        route.sort_by_shortest_path()
+    elif mode == 'Priority':
+        route.sort_by_deadline()
+    Search_algorithms.AStarSearch(mapa,'Centro de Entregas',route,'Run')
 
 
 # esta função vai organizar as encomendas por deadline e ao mesmo tempo por freguesia

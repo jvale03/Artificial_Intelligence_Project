@@ -2,7 +2,7 @@ import Push_data
 import Data.Data_generator as Generator
 import time
 import Aux_functions
-import Search_algorithms
+import threading
 
 def get_estafetas():
     drivers_list = []
@@ -17,7 +17,8 @@ def get_estafetas():
 
 def menu(data,option):
     if option == 1:
-        data.display_graph()
+        data.display_graph()   
+        
 
     elif option == 2:
         option = ''
@@ -64,6 +65,26 @@ def menu(data,option):
 
         
             data.delete_route(route)
+        
+        threads = []
+
+        option = input('Realizar rota prioritária(1)\nRealizar rota eco(2)\n')
+        while option != '1' or option != '2':
+            if option == '1':
+                for route in routes_list:
+                    new_thread = threading.Thread(target=Aux_functions.run_route, args=(mapa,route,'Priority'))
+                    threads.append(new_thread)
+                    new_thread.start()  
+
+                break
+
+            elif option == '2':
+                for route in routes_list:
+                    new_thread = threading.Thread(target=Aux_functions.run_route, args=(mapa,route,'Eco'))
+                    new_thread.start()   
+
+                break
+            option = input('Realizar rota prioritária(1)\nRealizar rota eco(2)\n')    
 
 
     elif option == 4:
