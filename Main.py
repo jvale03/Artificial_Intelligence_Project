@@ -4,6 +4,11 @@ import time
 import Aux_functions
 import threading
 
+def new_line():
+    for i in range(4):
+        time.sleep(6)
+        print('')
+
 def get_estafetas():
     drivers_list = []
     driver = input('Insira o id de um estafeta: ')
@@ -14,6 +19,7 @@ def get_estafetas():
             drivers_list.append(int(driver))
         driver = input('Insira o id de um estafeta: ')
     return drivers_list
+
 
 def menu(data,option):
     if option == 1:
@@ -62,21 +68,42 @@ def menu(data,option):
             print(f'\033[1;33mAStar: \033[m{path[1]} -> \033[1;4m{path[4][0]}s\033[m')
             print(f'\033[1;33mBFS: \033[m{path[2]} -> \033[1;4m{path[4][1]}s\033[m')
             print(f'\033[1;33mDFS: \033[m{path[3]} -> \033[1;4m{path[4][2]}s\033[m\n')
-
-        
+            
             data.delete_route(route)
         
+        threads = []
 
         option = input('Realizar rota prioritária(1)\nRealizar rota eco(2)\nSair\n')
         if option == '1':
             for route in routes_list:
-                new_thread = threading.Thread(target=Aux_functions.run_route, args=(mapa,route,'Priority'))
-                new_thread.start()  
+                new_thread = threading.Thread(target=Aux_functions.run_route,args=(mapa,route,'Priority'))
+                threads.append(new_thread)
+                new_thread.start() 
+            nl_thread = threading.Thread(target=new_line)
+            nl_thread.start() 
 
         elif option == '2':
             for route in routes_list:
-                new_thread = threading.Thread(target=Aux_functions.run_route, args=(mapa,route,'Eco'))
-                new_thread.start()   
+                new_thread = threading.Thread(target=Aux_functions.run_route,args=(mapa,route,'Eco'))
+                threads.append(new_thread)
+                new_thread.start() 
+            nl_thread = threading.Thread(target=new_line)
+            nl_thread.start() 
+
+        while True:
+            option = input('Remover Caminho(1)\nAdicionar Caminho(2)\nSair\n')
+            if option.isdigit():
+                option = int(option)
+            if option == 1:
+                node1 = input("Insere freguesia: ")
+                node2 = input("Insere freguesia: ")
+                data.remove_edge(node1,node2)
+            elif option == 2:
+                node1 = input("Insere freguesia: ")
+                node2 = input("Insere freguesia: ")
+                data.add_edge(node1,node2)
+            else: 
+                break
 
 
 

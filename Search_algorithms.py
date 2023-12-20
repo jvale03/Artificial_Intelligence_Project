@@ -41,7 +41,7 @@ def AStarSearch(graph, start, route, mode):
                         current_node = parent[current_node]
                     path.reverse()
                     if(mode == 'Run'):
-                        print(f'\033[1mDriver {route.get_driver().get_id()}:\033[m {path} -> {"A tempo" if goal.get_deadline() - goal.get_date() > 0 else "Fora de tempo"}')
+                        print(f'\033[1mDriver {route.get_driver().get_id()}:\033[m {path} -> {"A tempo" if goal.get_deadline() - goal.get_date() >= 0 else "Fora de tempo"}')
                     break
 
                 closed_list.append(current_node)
