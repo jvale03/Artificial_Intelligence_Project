@@ -11,7 +11,7 @@ def AStarSearch(graph, start, route, mode):
         final_path = []
         for goal in goals:
             if mode == 'Run':
-                time.sleep(6)
+                time.sleep(7)
             Aux_functions.update_heuristic(graph,start)
             open_list = [start] # queue
             closed_list = [] # visited

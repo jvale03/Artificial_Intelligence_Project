@@ -6,10 +6,10 @@ import Aux_functions
 
 
 class Route:
-    def __init__(self,id,driver,vehicle,area,order_list):
+    def __init__(self,id,driver,area,order_list):
         self.id = id
         self.driver = driver
-        self.vehicle = vehicle
+        self.vehicle = None
         self.distance = 0
         self.weight = 0
         self.volume = 0

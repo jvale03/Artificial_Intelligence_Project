@@ -82,7 +82,7 @@ class Data:
                     x+=1
                     y+=1
                 id+=1
-                new_route = Route.Route(id,self.drivers[driver],None,area,orders_array)
+                new_route = Route.Route(id,self.drivers[driver],area,orders_array)
                 self.add_route(new_route)               
             
         for route in self.routes:
