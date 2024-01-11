@@ -61,13 +61,13 @@ def menu(data,option):
             print(f'\033[1;33mPercurso Prioritário:\033[m {path[0]}\n\033[1;33mDistancia:\033[m {route.get_distance()}km, {Aux_functions.convert_to_hours_str(round(route.get_distance()/route.get_vehicle().get_average_speed(),2))}\n\033[1;33mVeículo:\033[m {route.get_vehicle()}, {route.get_vehicle().get_average_speed()}km/h')
             print(f'\033[1;33mAStar: \033[m{path[1]}')
             print(f'\033[1;33mBFS: \033[m{path[2]}')
-            print(f'\033[1;33mDFS: \033[m{path[3]}')
+            print(f'\033[1;33mDFS: \033[m{path[3]}\n')
 
             path = Aux_functions.eco(mapa,route)
             print(f'\033[1;33mPercurso Eco:\033[m {path[0]}\n\033[1;33mDistancia:\033[m {route.get_distance()}km, {Aux_functions.convert_to_hours_str(round(route.get_distance()/route.get_vehicle().get_average_speed(),2))}\n\033[1;33mVeículo:\033[m {route.get_vehicle()}, {route.get_vehicle().get_average_speed()}km/h')
             print(f'\033[1;33mAStar: \033[m{path[1]}')
             print(f'\033[1;33mBFS: \033[m{path[2]}')
-            print(f'\033[1;33mDFS: \033[m{path[3]}')
+            print(f'\033[1;33mDFS: \033[m{path[3]}\n')
             
             data.delete_route(route)
         
